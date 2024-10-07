@@ -12,13 +12,36 @@
 
 def main():
     # YOUR CODE STARTS HERE, each line must be indented (one tab)
+    print("\nTax Withholding Calculator\n")
 
+    salary=float(input("Please enter the full amount of your weekly salary: "))
 
+    dep=float(input("How many dependents do you have?: "))
 
+    proTax = 0.06 * float(salary)
 
+    fedTax = 0.25 * float(salary)
 
+    tWith = proTax + fedTax
 
+    tHome =salary - tWith
 
+    depDed = dep * (0.02 * salary)
+
+    if depDed >= 0:
+        tHome = (salary + (dep * (0.02 * salary))) - tWith
+        tWith = tWith - depDed
+
+    print("\nProvincial Tax Withheld: ${0:.2f}".format(proTax))
+
+    print("Federal Tax Withheld: ${0:.2f}".format(fedTax))
+
+    print("Dependent Deduction for {0:.0f} dependents: ${1:.2f}".format(dep,depDed))
+
+    print("Total Withheld: ${0:.2f}".format(tWith))
+
+    print("Total Take-Home Pay: ${0:.2f}".format(tHome))
+      
 
     # YOUR CODE ENDS HERE
 
